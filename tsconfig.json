@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES2016",
     "module": "NodeNext",
-    "rootDir": "src",
-    "outDir": "./dist",
+    "rootDir": "./src",
+    "outDir": "./build",
     "moduleResolution": "NodeNext",
     "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,

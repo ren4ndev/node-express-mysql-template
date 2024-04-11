@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  node:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    container_name: ren4ndev_api # Update template
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: development
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: database
+      MYSQL_PORT: 3306
+    command: npm run dev
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: mysql:8.0.29
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ren4ndevdb # Update template
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./scripts/users.sql:/docker-entrypoint-initdb.d/users.sql
