@@ -2,14 +2,19 @@
 
 Esse é um template criado por mim para facilitar a criação de novos projetos de API's back-end (Node, Typescript, Express, MySQL). Ele é utilizado em outros templates com diferentes variações.
 
-# Setup
+## Setup
+
+- `mv env-example .env`;
+- `docker compose up --build -d`
+
+## Template tree
 
 ```
-├── Node.js / Express template
+├── Node.js template
 │   └── Node.js + MySQL template
 ```
 
-#### Node.js / Express template (chore v1)
+#### Node.js template
 
 - Node.js
 - Express.js
@@ -20,7 +25,8 @@ Esse é um template criado por mim para facilitar a criação de novos projetos 
 - Husky + lint-staged (pre-commit / pre-push)
 - Path map (tsc-alias, tsconfig-paths)
 
-#### Node.js + MySQL template (v1)
+#### Node.js + MySQL template
 
 - Docker
 - MySQL
+- Dotenv
