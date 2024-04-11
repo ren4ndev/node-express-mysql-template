@@ -1,6 +1,9 @@
 import express from "express";
 import { Request, Response } from "express";
 import { connection } from "@/db/connection";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 

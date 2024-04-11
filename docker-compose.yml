@@ -9,12 +9,13 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+      - .env:/app/.env
     ports:
       - 3000:3000
     environment:
-      NODE_ENV: development
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      NODE_ENV: ${NODE_ENV}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_HOST: database
       MYSQL_PORT: 3306
     command: npm run dev
@@ -26,13 +27,13 @@ services:
     image: mysql:8.0.29
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ren4ndevdb # Update template
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 5
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
     volumes:
       - ./scripts/users.sql:/docker-entrypoint-initdb.d/users.sql
