@@ -4,6 +4,7 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: .
+      target: development
     container_name: ren4ndev_api # Update template
     restart: always
     working_dir: /app
@@ -13,7 +14,6 @@ services:
     ports:
       - 3000:3000
     environment:
-      NODE_ENV: ${NODE_ENV}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_HOST: database
