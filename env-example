@@ -1,3 +1,5 @@
+ENABLED_HOSTS="http://localhost:3000;https://www.google.com.br"
+
 MYSQL_HOST=localhost
 MYSQL_PORT=3306
 MYSQL_USER=root
